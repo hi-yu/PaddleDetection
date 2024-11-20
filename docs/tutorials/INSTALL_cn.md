@@ -7,18 +7,19 @@
 
 ## 环境要求
 
-- PaddlePaddle 2.3.2
+- PaddlePaddle 2.6.1
 - OS 64位操作系统
-- Python 3(3.5.1+/3.6/3.7/3.8/3.9/3.10)，64位版本
-- pip/pip3(9.0.1+)，64位版本
-- CUDA >= 10.2
+- Python 3(3.8/3.9/3.10/3.11/3.12)，64位版本
+- pip/pip3(20.2.2+)，64位版本
+- CUDA >= 11.0
 - cuDNN >= 7.6
 
 PaddleDetection 依赖 PaddlePaddle 版本关系：
 
 |  PaddleDetection版本  | PaddlePaddle版本  |    备注    |
 | :------------------: | :---------------: | :-------: |
-|    develop           |       >=2.3.2     |     默认使用动态图模式    |
+|    develop           |       >=2.6.1     |     --    |
+|    release/2.8       |       >=2.6.1     |     --    |
 |    release/2.6       |       >=2.3.2     |     默认使用动态图模式    |
 |    release/2.5       |       >= 2.2.2    |     默认使用动态图模式    |
 |    release/2.4       |       >= 2.2.2    |     默认使用动态图模式    |
@@ -36,11 +37,11 @@ PaddleDetection 依赖 PaddlePaddle 版本关系：
 ### 1. 安装PaddlePaddle
 
 ```
-# CUDA10.2
-python -m pip install paddlepaddle-gpu==2.3.2 -i https://mirror.baidu.com/pypi/simple
+# CUDA11.7
+python -m pip install paddlepaddle-gpu==2.6.1.post120 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 
 # CPU
-python -m pip install paddlepaddle==2.3.2 -i https://mirror.baidu.com/pypi/simple
+python -m pip install paddlepaddle==2.6.1 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 ```
 - 更多CUDA版本或环境快速安装，请参考[PaddlePaddle快速安装文档](https://www.paddlepaddle.org.cn/install/quick)
 - 更多安装方式例如conda或源码编译安装方法，请参考[PaddlePaddle安装文档](https://www.paddlepaddle.org.cn/documentation/docs/zh/install/index_cn.html)
@@ -81,13 +82,12 @@ python setup.py install
 ```
 
 **注意**
-1. 如果github下载代码较慢，可尝试使用[gitee](https://gitee.com/PaddlePaddle/PaddleDetection.git)或者[代理加速](https://doc.fastgit.org/zh-cn/guide.html)。
+1. 如果github下载代码较慢，可尝试使用[gitee](https://gitee.com/PaddlePaddle/PaddleDetection.git)或者[代理加速](https://help.kkgithub.com/questions/)。
 
 1. 若您使用的是Windows系统，由于原版cocoapi不支持Windows，`pycocotools`依赖可能安装失败，可采用第三方实现版本，该版本仅支持Python3
 
     ```pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI```
 
-2. 若您使用的是Python <= 3.6的版本，安装`pycocotools`可能会报错`distutils.errors.DistutilsError: Could not find suitable distribution for Requirement.parse('cython>=0.27.3')`, 您可通过先安装`cython`如`pip install cython`解决该问题
 
 
 安装后确认测试通过：
@@ -101,7 +101,8 @@ python ppdet/modeling/tests/test_architectures.py
 ```
 .......
 ----------------------------------------------------------------------
-Ran 7 tests in 12.816s
+Ran 7 tests in 2.654s
+
 OK
 ```
 
